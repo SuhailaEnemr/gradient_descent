@@ -19,7 +19,17 @@ y_test = Y[16:]
 estimated_weight, estimated_bias = gredian_descent(x_train, y_train, iterations=2000)
 print(f"Estimated Weight: {estimated_weight}\nEstimated Bias: {estimated_bias}")
 
-score = MSE(y_test , x_test)
+y_pred = estimated_weight * x_test + estmated_bias
+
+# Plotting the regression line
+plt.figure(figsize = (8,6))
+plt.scatter(X, Y, marker='o', color='red')
+plt.plot([min(X), max(X)], [min(y_pred), max(y_pred)], color='blue',markerfacecolor='red',
+            markersize=10,linestyle='dashed')
+plt.xlabel("X")
+plt.ylabel("Y")
+plt.show()
+score = MSE(y_test , y_pred)
 print('score : ' , score)
 
 # Mean Squared Error
